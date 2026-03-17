@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Wisnu Wicaksono</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #f1b217;
+            --dark: #231f20;
+            --light-grey: #e6e7e8;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-grey);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--light-grey);
+            position: relative;
+            padding: 20px;
+        }
+
+        /* --- HEADER PORTO FOLIO --- */
+        .top-header {
+            position: relative;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .header-text-main {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -5px;
+            z-index: 1;
+        }
+
+        .header-text-main span {
+            display: block;
+        }
+
+        .header-image-box {
+            position: relative;
+            width: 400px;
+            height: 100%;
+            background: var(--yellow);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .header-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* HAPUS FILTER GRAYSCALE DI SINI JIKA INGIN HEADER BERWARNA */
+            /* filter: grayscale(1); */
+        }
+
+        .upload-overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .header-image-box:hover .upload-overlay {
+            opacity: 1;
+        }
+
+        /* --- HERO SECTION (FOTO PROFIL) --- */
+        .hero-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .hero-left {
+            flex: 1;
+            position: relative;
+        }
+
+        .photo-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .photo-bg-accent {
+            position: absolute;
+            background: var(--yellow);
+            width: 110%;
+            height: 80%;
+            bottom: 10%;
+            left: -10%;
+            border-radius: 0 150px 150px 0;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 100%;
+            position: relative;
+            z-index: 3;
+            /* PERBAIKAN: HAPUS filter: grayscale(1) contrast(1.1); DI SINI */
+            display: block;
+        }
+
+        .hero-right {
+            flex: 1.5;
+            padding-top: 20px;
+        }
+
+        .hero-right h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        /* GRID CONTENT */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .side-column h3, .main-column h3 {
+            border-bottom: 3px solid var(--yellow);
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        /* TIMELINE */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid var(--yellow);
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--dark);
+            border-radius: 50%;
+        }
+
+        .experience-item h4 { font-weight: 900; font-size: 0.95rem; }
+        .experience-item span { font-size: 0.8rem; color: #666; display: block; margin-bottom: 5px; }
+
+        .software-grid { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
+        .software-icon {
+            width: 45px; height: 45px; background: var(--dark); color: white;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 10px; font-weight: bold; font-size: 0.8rem;
+        }
+
+        .contact-card {
+            background: white; padding: 20px; border-radius: 15px;
+            margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-item { font-size: 0.85rem; margin-bottom: 8px; }
+
+        /* Hidden Input File */
+        input[type="file"] { display: none; }
+
+        @media (max-width: 768px) {
+            .header-text-main { font-size: 4rem; }
+            .header-image-box { width: 150px; height: 200px; }
+            .hero-section, .main-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="top-header">
+        <div class="header-text-main">
+            <span>PORTO</span>
+            <span style="color: var(--yellow);">FOLIO</span>
+        </div>
+        <div class="header-image-box" onclick="document.getElementById('headerUpload').click()">
+            <img id="headerImg" src="https://i.ibb.co.com/4ZqxGbp4/Desain-tanpa-judul-9.png" alt="Header Image">
+            <input type="file" id="headerUpload" accept="image/*" onchange="previewImage(this, 'headerImg')">
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-left">
+            <div class="photo-wrapper" onclick="document.getElementById('profileUpload').click()">
+                <div class="photo-bg-accent"></div>
+                <img id="profileImg" src="https://i.ibb.co.com/ksH3D6jt/d165443b-a587-4246-ab19-533a2351658c.png" alt="Wisnu Wicaksono" class="profile-img">
+                <div class="upload-overlay" style="border-radius: 0 0 150px 0;">Klik untuk ganti foto profil</div>
+                <input type="file" id="profileUpload" accept="image/*" onchange="previewImage(this, 'profileImg')">
+            </div>
+            
+            <div class="contact-card">
+                <h3 style="border:none; margin-bottom:15px; font-size: 1rem;">Let's Work Together:</h3>
+                <div class="contact-item">📧 wicaksonowisnu926@gmail.com</div>
+                <div class="contact-item">📍 Sukaraja III, Gedong Tataan, Lampung</div>
+                <div class="contact-item">🔗 www.duasehatilampung.co.id</div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <h2>" HELLO.</h2>
+            <div class="intro-text">
+                <p>Saya <strong>Wisnu Wicaksono</strong>, seorang profesional dengan latar belakang unik yang menggabungkan ketangguhan operasional dan keahlian teknis. Saat ini saya mendalami <strong>Informatics Engineering</strong> dengan fokus pada <strong>Cyber Security (Blue Team)</strong>.</p>
+                <p style="margin-top:10px;">Dengan pengalaman 7 tahun sebagai driver profesional dan transisi ke dunia IT, saya membawa perspektif disiplin, ketelitian, dan dedikasi.</p>
+            </div>
+
+            <div class="side-column">
+                <h3>Software Skill</h3>
+                <div class="software-grid">
+                    <div class="software-icon">Py</div>
+                    <div class="software-icon">Kali</div>
+                    <div class="software-icon">JS</div>
+                    <div class="software-icon">Sec</div>
+                    <div class="software-icon">Fl</div>
+                </div>
+
+                <h3>Education</h3>
+                <div class="experience-item" style="border-left-color: var(--dark);">
+                    <h4>Informatics Engineering</h4>
+                    <span>ITB Swadharma Jakarta (2022 - Present)</span>
+                    <p style="font-size: 0.8rem;">Semester 8 - Fokus pada Cyber Security & Thesis Digital Footprint.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="main-column">
+            <h3>Working Experience</h3>
+            <div class="experience-item">
+                <h4>Blue Team Cyber Security (Freelance/Project)</h4>
+                <span>2024 - Present</span>
+                <p style="font-size: 0.8rem;">Mengembangkan sistem "Sentinel" & "Ghost Ops".</p>
+            </div>
+            <div class="experience-item">
+                <h4>Blue Team Member</h4>
+                <span>Nextbyte.id (2013 - 2016)</span>
+            </div>
+            <div class="experience-item">
+                <h4>Professional Personal Driver</h4>
+                <span>PT Denko Wahana Sakti (7 Years)</span>
+            </div>
+        </div>
+
+        <div class="main-column">
+            <h3>Core Ventures</h3>
+            <div class="experience-item" style="border-left-color: var(--dark);">
+                <h4>Founder - Dua Sehati Batik</h4>
+                <span>2025 - Present</span>
+            </div>
+            <div class="experience-item" style="border-left-color: var(--dark);">
+                <h4>Taekwondo Practitioner</h4>
+                <span>Achievement: Walikota Cup 1 Lampung 2005</span>
+                <span>Darmajaya Cup 1 Lampung 2005</span>
+                <span>Darmajaya Cup II Lampung 2006</span>
+                <span>Walikota Cup 2 Lampung 2007</span>
+                <span>Penataran Wasit Taekwondo Daerah 2005</span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk preview gambar setelah upload
+    function previewImage(input, imgId) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById(imgId).setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Animasi Scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    document.querySelectorAll('.experience-item, .contact-card, .software-icon').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s ease-out';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
