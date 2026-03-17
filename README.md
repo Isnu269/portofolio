@@ -267,12 +267,12 @@
         <div class="main-column">
             <h3>Working Experience</h3>
             <div class="experience-item">
-                <h4>Blue Team Cyber Security (Freelance/Project)</h4>
-                <span>2024 - Present</span>
-                <p style="font-size: 0.8rem;">Mengembangkan sistem "Sentinel" & "Ghost Ops".</p>
+                <h4>Frontend Dua Sehati</h4>
+                <span>2025 - Present</span>
+                <p style="font-size: 0.8rem;">Mengembangkan Kemudian Maintance Website dan Ecommerce Dua Sehati ".</p>
             </div>
             <div class="experience-item">
-                <h4>Blue Team Member</h4>
+                <h4>Blue Team Freelance</h4>
                 <span>Nextbyte.id (2013 - 2016)</span>
             </div>
             <div class="experience-item">
