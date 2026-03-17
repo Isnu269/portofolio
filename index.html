@@ -279,6 +279,10 @@
                 <h4>Professional Personal Driver</h4>
                 <span>PT Denko Wahana Sakti (7 Years)</span>
             </div>
+              <div class="experience-item">
+                <h4>Driver Direksi</h4>
+                <span>PT Gaya Makmur Tracktors (1,2 Years)</span>
+            </div>
         </div>
 
         <div class="main-column">
